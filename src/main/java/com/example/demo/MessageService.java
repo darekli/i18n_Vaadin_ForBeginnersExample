@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.util.Locale;
 
 import static java.util.Locale.forLanguageTag;
 
-@Route
+@Route("mainpl")
 @Service
 public class MessageService extends VerticalLayout {
     private MessageSource messageSource;
@@ -20,14 +21,16 @@ public class MessageService extends VerticalLayout {
     public MessageService (MessageSource messageSource) {
         this.messageSource = messageSource;
         String welcome = messageSource.getMessage("welcome", new Object[]{}, forLanguageTag("pl"));
-        String msg = messageSource.getMessage("msg", new Object[]{}, forLanguageTag("en"));
+        String header = messageSource.getMessage("header", new Object[]{}, forLanguageTag("pl"));
         System.out.println(welcome);
-        System.out.println(msg);
+        H2 h2Header = new H2(header);
 
-      Button buttonSwitchLanguage = new Button(welcome = messageSource.getMessage("welcome", new Object[]{}, forLanguageTag("en")));
+        Button buttonSwitchLanguage = new Button(welcome);
         buttonSwitchLanguage.addClickListener((event -> {
-            Locale.forLanguageTag("en");
+            Locale.forLanguageTag("pl");
         }));
-       add(buttonSwitchLanguage);
+        add(h2Header);
+        add(buttonSwitchLanguage);
+
     }
 }

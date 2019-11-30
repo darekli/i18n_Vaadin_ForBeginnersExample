@@ -12,7 +12,7 @@ import java.util.Locale;
 
 
 
-@Route("aa")
+@Route
 @Component
 public class MainView extends VerticalLayout {
 
@@ -22,11 +22,11 @@ public class MainView extends VerticalLayout {
     public MainView(MessageSource messageSource) {
         this.messageSource = messageSource;
 
-            Button buttonSwitchLanguageToEnglish = new Button("Switch language to English");
+            Button buttonSwitchLanguageToEnglish = new Button("ENGLISH");
             buttonSwitchLanguageToEnglish.addClickListener((eventEn -> {
                 Locale.forLanguageTag("en");
             }));
-                Button buttonSwitchLanguageToPolish = new Button("Przełącz język na polski");
+                Button buttonSwitchLanguageToPolish = new Button("POLSKI");
                 buttonSwitchLanguageToPolish.addClickListener((eventPl -> {
                     Locale.forLanguageTag("pl");
 
